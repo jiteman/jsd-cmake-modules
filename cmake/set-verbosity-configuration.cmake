@@ -1,0 +1,17 @@
+include( ${JSD_CMAKE_SETTINGS_PATH}/verbosity/load-verbosity-configuration-file.cmake )
+
+macro( JSD_CMAKE_CURRENT_FILE_IN current-filename )
+	if ( JSD_CMAKE_VERBOSE_OUTPUT_IS_ON )
+		if ( JSD_CMAKE_CMAKE_OUTPUT_IS_ON )
+			message( STATUS "[JSD] --> ${current-filename}" )
+		endif()
+	endif()
+endmacro()
+
+macro( JSD_CMAKE_CURRENT_FILE_OUT current-filename )
+	if ( JSD_CMAKE_VERBOSE_OUTPUT_IS_ON )
+		if ( JSD_CMAKE_CMAKE_OUTPUT_IS_ON )
+			message( STATUS "[JSD] <-- ${current-filename}" )
+		endif()
+	endif()
+endmacro()
