@@ -1,4 +1,4 @@
-include( ${JSD_CMAKE_SETTINGS_PATH}/verbosity/load-verbosity-configuration-file.cmake )
+include( ${JSD_CMAKE_PATH}/verbosity/load-verbosity-configuration-file.cmake )
 
 macro( JSD_CMAKE_CURRENT_FILE_IN current-filename )
 	if ( JSD_CMAKE_VERBOSE_OUTPUT_IS_ON )

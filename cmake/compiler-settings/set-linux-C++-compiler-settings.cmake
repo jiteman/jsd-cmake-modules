@@ -1,4 +1,4 @@
-include( ${JSD_CMAKE_SETTINGS_PATH}/set-verbosity-configuration.cmake )
+include( ${JSD_CMAKE_PATH}/set-verbosity-configuration.cmake )
 
 JSD_CMAKE_CURRENT_FILE_IN( "set-linux-compiler-settings.cmake" )
 
