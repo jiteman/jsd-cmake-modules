@@ -38,9 +38,8 @@ if ( UNIX )
 	list( APPEND JSD_CMAKE_CXX_FLAGS "-Wmissing-declarations" ) # no previous declaration for ''
 	#	list( APPEND JSD_CMAKE_CXX_FLAGS "-Waggregate-return" )
 	list( APPEND JSD_CMAKE_CXX_FLAGS "-Winline" )
-	list( APPEND JSD_CMAKE_CXX_FLAGS "--param inline-unit-growth=30" )
+	list( APPEND JSD_CMAKE_CXX_FLAGS "-Wno-error=inline" )
 	list( APPEND JSD_CMAKE_CXX_FLAGS "-Wredundant-decls" )
-	list( APPEND JSD_CMAKE_CXX_FLAGS "-Winline" )
 	list( APPEND JSD_CMAKE_CXX_FLAGS "-Wno-long-long" )
 	#	list( APPEND JSD_CMAKE_CXX_FLAGS "-Wmissing-noreturn" )
 	list( APPEND JSD_CMAKE_CXX_FLAGS "-Wno-missing-field-initializers" )
@@ -74,14 +73,28 @@ if ( UNIX )
 
 	# optimization settings
 	#	common
+	list( APPEND JSD_CMAKE_CXX_FLAGS "-ffunction-sections" )
+	list( APPEND JSD_CMAKE_CXX_FLAGS "-fdata-sections" )
+	list( APPEND JSD_CMAKE_CXX_FLAGS "-fuse-ld=gold" ) # ld == 124s, gold == 36s, lld == 11s (lld does not work correctly with LTO)
+
 	#	debug
 	list( APPEND JSD_CMAKE_CXX_FLAGS_DEBUG "-g" )
 	list( APPEND JSD_CMAKE_CXX_FLAGS_DEBUG "-ggdb3" )
 	#	list( APPEND JSD_CMAKE_CXX_FLAGS_DEBUG "-Og" )
 	list( APPEND JSD_CMAKE_CXX_FLAGS_DEBUG "-D_GLIBCXX_DEBUG" )
 	list( APPEND JSD_CMAKE_CXX_FLAGS_DEBUG "-D_GLIBCXX_ASSERTIONS" )
+
 	#	release
 	list( APPEND JSD_CMAKE_CXX_FLAGS_RELEASE "-O3" )
+	list( APPEND JSD_CMAKE_CXX_FLAGS_RELEASE "-flto" ) # link time code generation
+	#	list( APPEND JSD_CMAKE_CXX_FLAGS "-finline-limit=600" ) # default ( 600 )
+	#	list( APPEND JSD_CMAKE_CXX_FLAGS "--param max-inline-insns-single=300" ) # default ( n / 2 )
+	#	list( APPEND JSD_CMAKE_CXX_FLAGS "--param max-inline-insns-auto=300" ) # default ( n / 2 )
+	#	list( APPEND JSD_CMAKE_CXX_FLAGS "--param min-inline-insns=130" ) # default ( min( 130, n ) )
+	#	list( APPEND JSD_CMAKE_CXX_FLAGS "--param max-inline-insns-rtl=600" ) # default ( n )
+
+	#	list( APPEND JSD_CMAKE_CXX_FLAGS "--param inline-unit-growth=50" ) # default ( 50 )
+	#	list( APPEND JSD_CMAKE_CXX_FLAGS "--param large-unit-insns=10000" ) # default ( 10000 )
 
 	# analysis settings
 	#	common
