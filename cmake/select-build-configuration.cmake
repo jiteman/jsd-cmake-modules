@@ -57,7 +57,7 @@ if ( ${JSD_CURRENT_CONFIGURATION} STREQUAL "is_not_specified" )
 endif() # if ( ${JMSF_CURRENT_CONFIGURATION} STREQUAL "is_not_specified" )
 
 
-# set JMSD configuration flags
+# set JSD configuration flags
 if ( JSD_CURRENT_CONFIGURATION )
 	if ( ${JSD_CURRENT_CONFIGURATION} STREQUAL "Debug" )
 		message( STATUS "[JSD] BUILD-CONFIGURATION: Selecting debug build type" )
@@ -73,7 +73,7 @@ if ( JSD_CURRENT_CONFIGURATION )
 #		set( CMAKE_BUILD_TYPE Release CACHE STRING "[JSD] Defaulting to ${JSD_CURRENT_CONFIGURATION} build configuration" FORCE )
 
 	else()
-		message( SEND_ERROR "[JSD] BUILD-CONFIGURATION: Unsupported JMSD build configuration type: ${JSD_CURRENT_CONFIGURATION}" )
+		message( SEND_ERROR "[JSD] BUILD-CONFIGURATION: Unsupported JSD build configuration type: ${JSD_CURRENT_CONFIGURATION}" )
 
 	endif()
 
